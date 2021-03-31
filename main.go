@@ -11,7 +11,8 @@ func main() {
 	//feature.AppendSlc()
 	//feature.CompStruct()
 	//feature.CmpStruct()
-	feature.FuncClosure()
+	//feature.FuncClosure()
+	feature.SlcLen()
 }
 
 func testDefer() {
