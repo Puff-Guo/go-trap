@@ -41,3 +41,13 @@ func SlcLen() {
 	fmt.Println("b len:", len(b), ",cap:", cap(b))
 	fmt.Println("c len:", len(c), ",cap:", cap(c))
 }
+
+/*
+invalid operation: [1]int literal == [2]int literal (mismatched types [1]int and [2]int)
+invalid operation: []int literal == []int literal (slice can only be compared to nil)
+go 中不同类型是不能比较的，而数组长度是数组类型的一部分
+*/
+func SlcCmp() {
+	//fmt.Println([...]int{1} == [2]int{1})
+	//fmt.Println([]int{1} == []int{1})
+}
