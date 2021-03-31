@@ -12,7 +12,10 @@ func main() {
 	//feature.CompStruct()
 	//feature.CmpStruct()
 	//feature.FuncClosure()
-	feature.SlcLen()
+	//feature.RangeTmp()
+	//feature.SlcRange()
+	//feature.ArgRange()
+	feature.SlcRangeAdd()
 }
 
 func testDefer() {

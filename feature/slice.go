@@ -1,6 +1,9 @@
 package feature
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func AppendSlc() {
 	s := make([]int, 5)
@@ -50,4 +53,51 @@ go 中不同类型是不能比较的，而数组长度是数组类型的一部�
 func SlcCmp() {
 	//fmt.Println([...]int{1} == [2]int{1})
 	//fmt.Println([]int{1} == []int{1})
+}
+
+func SlcRange() {
+	fmt.Println("SlcRange slice")
+	var a = []int{1, 2, 3, 4, 5}
+	var r [5]int
+
+	for i, v := range a {
+		fmt.Println("i:", i, " v:", v, " v point:", &v, " v type:", reflect.TypeOf(v).Name())
+		if i == 0 {
+			a[1] = 12
+			a[2] = 13
+		}
+		r[i] = v
+	}
+
+	fmt.Println("r = ", r)
+	fmt.Println("a = ", a)
+}
+
+func ArgRange() {
+	fmt.Println("ArgRange array")
+	var a = [5]int{1, 2, 3, 4, 5}
+	var r [5]int
+
+	for i, v := range a {
+		fmt.Println("i:", i, " v:", v, " v point:", &v, " v type:", reflect.TypeOf(v).Name())
+		if i == 0 {
+			a[1] = 12
+			a[2] = 13
+		}
+		r[i] = v
+	}
+
+	fmt.Println("r = ", r)
+	fmt.Println("a = ", a)
+}
+
+//循环切片追加
+//不会出现死循环，能正常结束。循环次数在循环开始前就已经确定，循环内改变切片的长度，不影响循环次数。
+func SlcRangeAdd() {
+	v := []int{1, 2, 3}
+	for i := range v {
+		v = append(v, i)
+	}
+
+	fmt.Println(v)
 }
