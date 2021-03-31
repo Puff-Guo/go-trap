@@ -10,7 +10,8 @@ func main() {
 	//testDefer()
 	//feature.AppendSlc()
 	//feature.CompStruct()
-	feature.CmpStruct()
+	//feature.CmpStruct()
+	feature.FuncClosure()
 }
 
 func testDefer() {
