@@ -17,7 +17,12 @@ func main() {
 	//feature.ArgRange()
 	//feature.SlcRangeAdd()
 	//feature.ConstAssign()
-	feature.MutexAssign()
+	//feature.MutexAssign()
+	//feature.AppendShareArrary()
+	//feature.AppendShareSlc()
+	//feature.SlcAppendPoint()
+	//feature.DeferTest()
+	feature.InterfaceCmp()
 }
 
 func testDefer() {

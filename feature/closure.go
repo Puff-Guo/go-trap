@@ -1,6 +1,9 @@
 package feature
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Person struct {
 	age int
@@ -26,4 +29,26 @@ func FuncClosure() {
 	}()
 
 	person.age = 29
+}
+
+func foo() (err error) {
+	defer func() {
+		fmt.Println(err)
+		err = errors.New("a")
+	}()
+
+	defer func(e error) {
+		fmt.Println(e)
+		e = errors.New("b")
+	}(err)
+	return errors.New("c")
+}
+
+/*
+<nil>
+c
+a
+*/
+func DeferTest() {
+	fmt.Println(foo())
 }

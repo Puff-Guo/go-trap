@@ -10,6 +10,7 @@ type MyMutex struct {
 	sync.Mutex
 }
 
+//锁赋值:会把锁状态一起拷贝
 func MutexAssign() {
 	var mu MyMutex
 	mu.Lock()

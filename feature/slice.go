@@ -101,3 +101,52 @@ func SlcRangeAdd() {
 
 	fmt.Println(v)
 }
+
+//切片共享底层数组及扩容
+func AppendShareArrary() {
+	fmt.Println("AppendShareArrary")
+	a := [3]int{0, 1, 2}
+	s := a[1:2] // {1}
+
+	s[0] = 11         // 由于共享底层数组，所以a变为{0, 11, 2} s变为{11}
+	s = append(s, 12) // a变为{0, 11, 12} s变为{11, 12}
+	s = append(s, 13) // 超过cap，s发生扩容，不再共享a的底层数组 s变为{11, 12, 13} a仍为{0, 11, 12}
+	s[0] = 21         // s变为{21, 12, 13} 底层数组不共享a，a仍然为{0, 11, 12}
+
+	fmt.Println(a)
+	fmt.Println(s)
+}
+
+//切片由切片初始化
+func AppendShareSlc() {
+	fmt.Println("AppendShareSlc")
+	a := []int{0, 1, 2}
+	s := a[1:2] // {1}
+
+	s[0] = 11         // 由于共享底层数组，所以a变为{0, 11, 2} s变为{11}
+	s = append(s, 12) // a变为{0, 11, 12} s变为{11, 12}
+	s = append(s, 13) // 超过cap，s发生扩容，不再共享a的底层数组 s变为{11, 12, 13} a仍为{0, 11, 12}
+	s[0] = 21         // s变为{21, 12, 13} 底层数组不共享a，a仍然为{0, 11, 12}
+
+	fmt.Println(a)
+	fmt.Println(s)
+}
+
+func Append(s []int) {
+	s = append(s, 5)
+}
+
+func Add(s []int) {
+	for i := range s {
+		s[i] = s[i] + 5
+	}
+}
+
+//由于go都是值传递,外部s值指定位置没有边,传入Append由于扩容后底层数据换了,所以外部s是没有变的,Add是操作引用还是会影响实际值
+func SlcAppendPoint() {
+	s := []int{1, 2, 3, 4}
+	Append(s)
+	fmt.Println(s)
+	Add(s)
+	fmt.Println(s)
+}
