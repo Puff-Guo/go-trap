@@ -18,7 +18,7 @@ func RangeTmp() {
 			fmt.Println(i, v)
 		}()
 
-		// 正确写法
+		// 正确写法 匿名函数
 		// go func(i,v int) {
 		//     fmt.Println(i, v)
 		// }(i,v)

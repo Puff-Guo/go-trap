@@ -31,6 +31,11 @@ func FuncClosure() {
 	person.age = 29
 }
 
+/*
+	return defer 返回值 执行顺序:1 return 把返回值放到堆栈 2 defer执行收尾 3 调用者获取堆栈值(返回值)
+	func()int 这种因为没有提前声明,第三步返回值由于defer没有办法引用,所以不能改变
+	func()(i int) 这种由于有提前声明,所以defer可以修改堆栈值,可以改变
+*/
 func foo() (err error) {
 	defer func() {
 		fmt.Println(err)
