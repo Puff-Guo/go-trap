@@ -2,6 +2,7 @@ package feature
 
 import (
 	"fmt"
+	"reflect"
 )
 
 type T interface{}
@@ -29,4 +30,7 @@ func InterfaceCmp() {
 
 	fmt.Println(i1 == t, i1 == nil)
 	fmt.Println(i2 == p, i2 == nil)
+	fmt.Println(reflect.TypeOf(i2))
+	fmt.Println(reflect.TypeOf(i1))
+	//fmt.Println(i2.type())
 }

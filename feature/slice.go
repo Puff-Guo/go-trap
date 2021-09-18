@@ -150,3 +150,27 @@ func SlcAppendPoint() {
 	Add(s)
 	fmt.Println(s)
 }
+
+func changeSlice(s []int) []int {
+	fmt.Printf("func s %v %p \n", s, &s)
+	s[0] = -1
+	s = append(s, 3)
+	s[1] = 1111
+	return s
+}
+
+func TestSliceAsOption() {
+	slice := make([]int, 2, 2)
+	for i := 0; i < len(slice); i++ {
+		slice[i] = i
+	}
+
+	fmt.Printf("slice %v %p \n", slice, &slice)
+
+	ret := changeSlice(slice)
+	fmt.Printf("slice %v %p, ret %v \n", slice, &slice, ret)
+
+	ret[1] = -1111
+
+	fmt.Printf("slice %v %p, ret %v \n", slice, &slice, ret)
+}
